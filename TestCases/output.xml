@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.10.2 on win32)" generated="20220715 11:50:34.643" rpa="false" schemaversion="2">
+<suite id="s1" name="US1" source="C:\development\SwaggerAPI\TestCases\US1.robot">
+<test id="s1-t1" name="Create User">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data}</var>
+<arg>id=1</arg>
+<arg>username=jdsn</arg>
+<arg>firstname=janardan</arg>
+<arg>lastname=dev</arg>
+<arg>email=janardandev@gmail.com</arg>
+<arg>password=jdsn123</arg>
+<arg>phone=0456455455</arg>
+<arg>userStatus=0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220715 11:50:34.830" level="INFO">&amp;{data} = { id=1 | username=jdsn | firstname=janardan | lastname=dev | email=janardandev@gmail.com | password=jdsn123 | phone=0456455455 | userStatus=0 }</msg>
+<status status="PASS" starttime="20220715 11:50:34.830" endtime="20220715 11:50:34.830"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>https://petstore.swagger.io/v2/user</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20220715 11:50:35.424" level="INFO">POST Request : url=https://petstore.swagger.io/v2/user 
+ path_url=/v2/user 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '174', 'Content-Type': 'application/json'} 
+ body=b'{"id": "1", "username": "jdsn", "firstname": "janardan", "lastname": "dev", "email": "janardandev@gmail.com", "password": "jdsn123", "phone": "0456455455", "userStatus": "0"}' 
+ </msg>
+<msg timestamp="20220715 11:50:35.424" level="INFO">POST Response : url=https://petstore.swagger.io/v2/user 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:36 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"1"} 
+ </msg>
+<msg timestamp="20220715 11:50:35.424" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:34.830" endtime="20220715 11:50:35.424"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220715 11:50:35.424" endtime="20220715 11:50:35.424"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>1</arg>
+<arg>${resp.json()}[message]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220715 11:50:35.424" endtime="20220715 11:50:35.424"/>
+</kw>
+<status status="PASS" starttime="20220715 11:50:34.830" endtime="20220715 11:50:35.424"/>
+</test>
+<test id="s1-t2" name="Get User Details">
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://petstore.swagger.io/v2/user/jdsn</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20220715 11:50:35.987" level="INFO">GET Request : url=https://petstore.swagger.io/v2/user/jdsn 
+ path_url=/v2/user/jdsn 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220715 11:50:35.987" level="INFO">GET Response : url=https://petstore.swagger.io/v2/user/jdsn 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:36 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":1,"username":"jdsn","email":"janardandev@gmail.com","password":"jdsn123","phone":"0456455455","userStatus":0} 
+ </msg>
+<msg timestamp="20220715 11:50:35.987" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:35.440" endtime="20220715 11:50:35.987"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220715 11:50:35.987" endtime="20220715 11:50:35.987"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220715 11:50:35.987" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:35.987" endtime="20220715 11:50:35.987"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>jdsn</arg>
+<arg>${response.json()}[username]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220715 11:50:35.987" endtime="20220715 11:50:35.987"/>
+</kw>
+<status status="PASS" starttime="20220715 11:50:35.440" endtime="20220715 11:50:35.987"/>
+</test>
+<test id="s1-t3" name="Delete User">
+<kw name="DELETE" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://petstore.swagger.io/v2/user/jdsn</arg>
+<doc>Sends a DELETE request.</doc>
+<msg timestamp="20220715 11:50:36.534" level="INFO">DELETE Request : url=https://petstore.swagger.io/v2/user/jdsn 
+ path_url=/v2/user/jdsn 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20220715 11:50:36.534" level="INFO">DELETE Response : url=https://petstore.swagger.io/v2/user/jdsn 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:37 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"jdsn"} 
+ </msg>
+<msg timestamp="20220715 11:50:36.534" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:36.002" endtime="20220715 11:50:36.534"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220715 11:50:36.534" endtime="20220715 11:50:36.534"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220715 11:50:36.534" level="INFO">&lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:36.534" endtime="20220715 11:50:36.534"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>jdsn</arg>
+<arg>${response.json()}[message]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220715 11:50:36.534" endtime="20220715 11:50:36.549"/>
+</kw>
+<status status="PASS" starttime="20220715 11:50:36.002" endtime="20220715 11:50:36.549"/>
+</test>
+<test id="s1-t4" name="Modify User">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data}</var>
+<arg>id=1</arg>
+<arg>username=jdsnM</arg>
+<arg>firstname=janardanM</arg>
+<arg>lastname=devM</arg>
+<arg>email=janardandevm@gmail.com</arg>
+<arg>password=jdsn@123</arg>
+<arg>phone=0456455455</arg>
+<arg>userStatus=0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220715 11:50:36.549" level="INFO">&amp;{data} = { id=1 | username=jdsnM | firstname=janardanM | lastname=devM | email=janardandevm@gmail.com | password=jdsn@123 | phone=0456455455 | userStatus=0 }</msg>
+<status status="PASS" starttime="20220715 11:50:36.549" endtime="20220715 11:50:36.549"/>
+</kw>
+<kw name="PUT" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>https://petstore.swagger.io/v2/user/jdsn</arg>
+<arg>json=${data}</arg>
+<doc>Sends a PUT request.</doc>
+<msg timestamp="20220715 11:50:37.096" level="INFO">PUT Request : url=https://petstore.swagger.io/v2/user/jdsn 
+ path_url=/v2/user/jdsn 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '179', 'Content-Type': 'application/json'} 
+ body=b'{"id": "1", "username": "jdsnM", "firstname": "janardanM", "lastname": "devM", "email": "janardandevm@gmail.com", "password": "jdsn@123", "phone": "0456455455", "userStatus": "0"}' 
+ </msg>
+<msg timestamp="20220715 11:50:37.096" level="INFO">PUT Response : url=https://petstore.swagger.io/v2/user/jdsn 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:38 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"1"} 
+ </msg>
+<msg timestamp="20220715 11:50:37.096" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:36.549" endtime="20220715 11:50:37.096"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220715 11:50:37.096" endtime="20220715 11:50:37.112"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>1</arg>
+<arg>${resp.json()}[message]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220715 11:50:37.112" endtime="20220715 11:50:37.112"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://petstore.swagger.io/v2/user/jdsnM</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20220715 11:50:37.643" level="INFO">GET Request : url=https://petstore.swagger.io/v2/user/jdsnM 
+ path_url=/v2/user/jdsnM 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220715 11:50:37.643" level="INFO">GET Response : url=https://petstore.swagger.io/v2/user/jdsnM 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:38 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"id":1,"username":"jdsnM","email":"janardandevm@gmail.com","password":"jdsn@123","phone":"0456455455","userStatus":0} 
+ </msg>
+<msg timestamp="20220715 11:50:37.643" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:37.112" endtime="20220715 11:50:37.643"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>jdsnM</arg>
+<arg>${response.json()}[username]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220715 11:50:37.643" endtime="20220715 11:50:37.643"/>
+</kw>
+<status status="PASS" starttime="20220715 11:50:36.549" endtime="20220715 11:50:37.643"/>
+</test>
+<test id="s1-t5" name="Create Multiple Users">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data1}</var>
+<arg>id=11</arg>
+<arg>username=jd11</arg>
+<arg>firstName=janardan1</arg>
+<arg>lastName=dev1</arg>
+<arg>email=jdev1@gmail.com</arg>
+<arg>password=jd@1231</arg>
+<arg>phone=4564554551</arg>
+<arg>userStatus=0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220715 11:50:37.643" level="INFO">&amp;{data1} = { id=11 | username=jd11 | firstName=janardan1 | lastName=dev1 | email=jdev1@gmail.com | password=jd@1231 | phone=4564554551 | userStatus=0 }</msg>
+<status status="PASS" starttime="20220715 11:50:37.643" endtime="20220715 11:50:37.643"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data2}</var>
+<arg>id=21</arg>
+<arg>username=jd21</arg>
+<arg>firstName=janardan2</arg>
+<arg>lastName=dev2</arg>
+<arg>email=jdev2@gmail.com</arg>
+<arg>password=jd@1232</arg>
+<arg>phone=4564554552</arg>
+<arg>userStatus=0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220715 11:50:37.659" level="INFO">&amp;{data2} = { id=21 | username=jd21 | firstName=janardan2 | lastName=dev2 | email=jdev2@gmail.com | password=jd@1232 | phone=4564554552 | userStatus=0 }</msg>
+<status status="PASS" starttime="20220715 11:50:37.643" endtime="20220715 11:50:37.659"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{data3}</var>
+<arg>id=31</arg>
+<arg>username=jd31</arg>
+<arg>firstName=janardan3</arg>
+<arg>lastName=dev3</arg>
+<arg>email=jdev3@gmail.com</arg>
+<arg>password=jd@1233</arg>
+<arg>phone=4564554553</arg>
+<arg>userStatus=0</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220715 11:50:37.659" level="INFO">&amp;{data3} = { id=31 | username=jd31 | firstName=janardan3 | lastName=dev3 | email=jdev3@gmail.com | password=jd@1233 | phone=4564554553 | userStatus=0 }</msg>
+<status status="PASS" starttime="20220715 11:50:37.659" endtime="20220715 11:50:37.659"/>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<var>@{req_body}</var>
+<arg>${data1}</arg>
+<arg>${data2}</arg>
+<arg>${data3}</arg>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220715 11:50:37.659" level="INFO">@{req_body} = [ {'id': '11', 'username': 'jd11', 'firstName': 'janardan1', 'lastName': 'dev1', 'email': 'jdev1@gmail.com', 'password': 'jd@1231', 'phone': '4564554551', 'userStatus': '0'} | {'id': '21', 'username':...</msg>
+<status status="PASS" starttime="20220715 11:50:37.659" endtime="20220715 11:50:37.659"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>https://petstore.swagger.io/v2/user/createWithList</arg>
+<arg>json=${req_body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20220715 11:50:38.190" level="INFO">POST Request : url=https://petstore.swagger.io/v2/user/createWithList 
+ path_url=/v2/user/createWithList 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '519', 'Content-Type': 'application/json'} 
+ body=b'[{"id": "11", "username": "jd11", "firstName": "janardan1", "lastName": "dev1", "email": "jdev1@gmail.com", "password": "jd@1231", "phone": "4564554551", "userStatus": "0"}, {"id": "21", "username": "jd21", "firstName": "janardan2", "lastName": "dev2", "email": "jdev2@gmail.com", "password": "jd@1232", "phone": "4564554552", "userStatus": "0"}, {"id": "31", "username": "jd31", "firstName": "janardan3", "lastName": "dev3", "email": "jdev3@gmail.com", "password": "jd@1233", "phone": "4564554553", "userStatus": "0"}]' 
+ </msg>
+<msg timestamp="20220715 11:50:38.190" level="INFO">POST Response : url=https://petstore.swagger.io/v2/user/createWithList 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:39 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"ok"} 
+ </msg>
+<msg timestamp="20220715 11:50:38.190" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:37.659" endtime="20220715 11:50:38.190"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${req_body}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220715 11:50:38.190" level="INFO">[{'id': '11', 'username': 'jd11', 'firstName': 'janardan1', 'lastName': 'dev1', 'email': 'jdev1@gmail.com', 'password': 'jd@1231', 'phone': '4564554551', 'userStatus': '0'}, {'id': '21', 'username': 'jd21', 'firstName': 'janardan2', 'lastName': 'dev2', 'email': 'jdev2@gmail.com', 'password': 'jd@1232', 'phone': '4564554552', 'userStatus': '0'}, {'id': '31', 'username': 'jd31', 'firstName': 'janardan3', 'lastName': 'dev3', 'email': 'jdev3@gmail.com', 'password': 'jd@1233', 'phone': '4564554553', 'userStatus': '0'}]</msg>
+<status status="PASS" starttime="20220715 11:50:38.190" endtime="20220715 11:50:38.190"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220715 11:50:38.190" level="INFO">{'code': 200, 'type': 'unknown', 'message': 'ok'}</msg>
+<status status="PASS" starttime="20220715 11:50:38.190" endtime="20220715 11:50:38.190"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220715 11:50:38.190" endtime="20220715 11:50:38.190"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>ok</arg>
+<arg>${response.json()}[message]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220715 11:50:38.190" endtime="20220715 11:50:38.190"/>
+</kw>
+<status status="PASS" starttime="20220715 11:50:37.643" endtime="20220715 11:50:38.205"/>
+</test>
+<test id="s1-t6" name="Get User Login">
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${url_userlogin}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20220715 11:50:38.737" level="INFO">GET Request : url=https://petstore.swagger.io/v2/user/login?username=jdsn&amp;password=jdsn123 
+ path_url=/v2/user/login?username=jdsn&amp;password=jdsn123 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220715 11:50:38.737" level="INFO">GET Response : url=https://petstore.swagger.io/v2/user/login?username=jdsn&amp;password=jdsn123 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:39 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'X-Expires-After': 'Fri Jul 15 09:50:39 UTC 2022', 'X-Rate-Limit': '5000', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"logged in user session:1657875039668"} 
+ </msg>
+<msg timestamp="20220715 11:50:38.737" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:38.205" endtime="20220715 11:50:38.737"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220715 11:50:38.737" endtime="20220715 11:50:38.737"/>
+</kw>
+<status status="PASS" starttime="20220715 11:50:38.205" endtime="20220715 11:50:38.737"/>
+</test>
+<test id="s1-t7" name="Get User Logout">
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${url_userlogout}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20220715 11:50:39.284" level="INFO">GET Request : url=https://petstore.swagger.io/v2/user/logout 
+ path_url=/v2/user/logout 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220715 11:50:39.284" level="INFO">GET Response : url=https://petstore.swagger.io/v2/user/logout 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 15 Jul 2022 08:50:40 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, DELETE, PUT', 'Access-Control-Allow-Headers': 'Content-Type, api_key, Authorization', 'Server': 'Jetty(9.2.9.v20150224)'} 
+ body={"code":200,"type":"unknown","message":"ok"} 
+ </msg>
+<msg timestamp="20220715 11:50:39.284" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220715 11:50:38.737" endtime="20220715 11:50:39.284"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220715 11:50:39.284" endtime="20220715 11:50:39.284"/>
+</kw>
+<status status="PASS" starttime="20220715 11:50:38.737" endtime="20220715 11:50:39.284"/>
+</test>
+<status status="PASS" starttime="20220715 11:50:34.643" endtime="20220715 11:50:39.284"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="US1">US1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
