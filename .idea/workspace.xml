@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acbb2007-77f9-46e1-ae21-f6357cb09634" name="Changes" comment="Petstore Swagger API by Janardan">
-      <change beforePath="$PROJECT_DIR$/Resources/Add.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Add.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/US1.robot" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/US1.robot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,14 +29,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/development/SwaggerAPI&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/development/SwaggerAPI/TestCases",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\development\SwaggerAPI\TestCases" />
@@ -48,7 +49,7 @@
       <recent name="C:\development\SwaggerAPI\Resource" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_US2_unittest.TestCaseUnit">
+  <component name="RunManager" selected="Python.US1">
     <configuration name="US1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SwaggerAPI" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,7 +181,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657879505547</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Petstore Swagger API by Janardan">
+      <created>1657879719520</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657879719520</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Petstore Swagger API by Janardan">
+      <created>1657879955859</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657879955859</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -51,13 +51,11 @@ Get User Login
 
     ${response}=    GET       ${url_userlogin}
     Status Should Be                 200    ${response}
-#    log    ${response}
-#    Should Be Equal As Strings    200    ${response.json()}[code]
+
 
 
 Get User Logout
 
     ${response}=    GET       ${url_userlogout}
     Status Should Be                 200    ${response}
-#    log    ${response}
-#    Should Be Equal As Strings    200    ${response.json()}[code]
+
