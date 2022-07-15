@@ -19,7 +19,7 @@ Uploading image of pet
         ${resp}    POST ON SESSION    mysession    /9843217/uploadImage    headers=${Header}    files=${files}
 
 Add a new pet to the store
-    [Documentation]         Here we are adding a new pet
+    [Documentation]        Here we are adding a new pet
     [Tags]      API
     &{category}     create dictionary      id=101     name=tuffy
     @{tags}         create List   ${category}
