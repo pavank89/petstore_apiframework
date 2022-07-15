@@ -1,0 +1,2 @@
+class ApiResources:
+    createWithList = "/createWithList"
