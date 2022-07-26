@@ -2,7 +2,7 @@
 
 ## Petstore Swagger API by Janardan
 
-### To run the application you need to install:-
+### Prerequisite to run the application,install below packages:-
 robotframework
 
 robotframework-requests
@@ -26,7 +26,12 @@ The main files to run test cases are in the "TestCases" Folder.
 
  
 ### Important folder
-I have created "Utilities package", "TestCases" and "Resouces" folder for all required files.
+I have created "Utilities package", and other required files under "TestCases" and "Resouces" folder for all required files.
+
+### How to run the application
+for robot file ,cd source location (TestCases folder) then run "robot .\US1.robot  "
+for robot file ,cd source location (TestCases folder) then run "robot .\US2.robot  "
+for .py file , .py file can be run directly from pyCharm 
 
 ### What I tried to implement.
 In US1.py-I tried to implement configparser, session, etc.
