@@ -1,5 +1,7 @@
-# SwaggerAPI
-Petstore Swagger API by Janardan
+## SwaggerAPI
+#Petstore Swagger API by Janardan
+
+To run the demo application you need to install
 
 
 The main files to run test cases are in the "TestCases" Folder.
