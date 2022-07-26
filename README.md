@@ -30,7 +30,9 @@ I have created "Utilities package", and other required files under "TestCases" a
 
 ### How to run the application
 for robot file ,cd source location (TestCases folder) then run "robot .\US1.robot  "
+
 for robot file ,cd source location (TestCases folder) then run "robot .\US2.robot  "
+
 for .py file , .py file can be run directly from pyCharm 
 
 ### What I tried to implement.
