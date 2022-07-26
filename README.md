@@ -11,11 +11,18 @@ requests
 
 
 ### Main folder and files to run all test cases:
+
 The main files to run test cases are in the "TestCases" Folder.
 
-For question1(US1)- I created robot file,unit test file and the py file (US1.robot, test_US1_unittest.py and US1.py)
+1. For question1(US1)-
+  * US1.robot
+  * test_US1_unittest.py
+  * US1.py 
 
-For Question2(US2)- I created a robot file and unit test file (US2.robot and test_US2_unittest.py)
+
+2. For Question2(US2)- 
+  * US2.robot
+  * test_US2_unittest.py
 
  
 ### Important folder
