@@ -1,5 +1,5 @@
 ## SwaggerAPI
-#Petstore Swagger API by Janardan
+# Petstore Swagger API by Janardan
 
 To run the demo application you need to install
 
